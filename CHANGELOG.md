@@ -45,5 +45,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - VentilAirSec MSC packet building
 - Device availability tracking
 
-[1.0.1]: https://github.com/pledou/ha-enocean-hacs/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/pledou/ha-enocean-hacs/releases/tag/v1.0.0
+[1.0.1]: https://github.com/pledou/ha-enocean/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/pledou/ha-enocean/releases/tag/v1.0.0

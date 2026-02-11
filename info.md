@@ -35,4 +35,4 @@ This integration requires the enhanced enocean Python library from [pledou/enoce
 
 ## Support
 
-For issues and feature requests, please visit the [GitHub repository](https://github.com/pledou/ha-enocean-hacs).
+For issues and feature requests, please visit the [GitHub repository](https://github.com/pledou/ha-enocean).

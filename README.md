@@ -1,8 +1,8 @@
 # EnOcean Extended for Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
-[![GitHub Release](https://img.shields.io/github/release/pledou/ha-enocean-hacs.svg)](https://github.com/pledou/ha-enocean-hacs/releases)
-[![License](https://img.shields.io/github/license/pledou/ha-enocean-hacs.svg)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/release/pledou/ha-enocean.svg)](https://github.com/pledou/ha-enocean/releases)
+[![License](https://img.shields.io/github/license/pledou/ha-enocean.svg)](LICENSE)
 
 An enhanced Home Assistant integration for EnOcean devices with extended device support and dynamic EEP parsing.
 
@@ -24,7 +24,7 @@ This custom integration extends the standard Home Assistant EnOcean integration 
 2. Click on "Integrations"
 3. Click the three dots in the top right corner
 4. Select "Custom repositories"
-5. Add this repository URL: `https://github.com/pledou/ha-enocean-hacs`
+5. Add this repository URL: `https://github.com/pledou/ha-enocean`
 6. Select category "Integration"
 7. Click "Add"
 8. Find "EnOcean Extended" in the integration list and click "Download"
@@ -32,7 +32,7 @@ This custom integration extends the standard Home Assistant EnOcean integration 
 
 ### Manual Installation
 
-1. Download the latest release from the [releases page](https://github.com/pledou/ha-enocean-hacs/releases)
+1. Download the latest release from the [releases page](https://github.com/pledou/ha-enocean/releases)
 2. Extract the `custom_components/enocean` folder to your Home Assistant's `custom_components` directory
 3. Restart Home Assistant
 
@@ -101,6 +101,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/pledou/ha-enocean-hacs/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/pledou/ha-enocean-hacs/discussions)
+- **Issues**: [GitHub Issues](https://github.com/pledou/ha-enocean/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/pledou/ha-enocean/discussions)
 - **Home Assistant Community**: [Community Forum](https://community.home-assistant.io/)

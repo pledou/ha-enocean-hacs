@@ -1,0 +1,14 @@
+{
+  "domain": "enocean",
+  "name": "EnOcean Extended",
+  "codeowners": ["@pledou"],
+  "config_flow": true,
+  "documentation": "https://github.com/pledou/ha-enocean-hacs",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/pledou/ha-enocean-hacs/issues",
+  "loggers": ["enocean"],
+  "requirements": ["git+https://github.com/pledou/enocean.git"],
+  "single_config_entry": true,
+  "version": "1.0.0"
+}

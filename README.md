@@ -1,0 +1,100 @@
+# EnOcean Extended for Home Assistant
+
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![GitHub Release](https://img.shields.io/github/release/pledou/ha-enocean-hacs.svg)](https://github.com/pledou/ha-enocean-hacs/releases)
+[![License](https://img.shields.io/github/license/pledou/ha-enocean-hacs.svg)](LICENSE)
+
+An enhanced Home Assistant integration for EnOcean devices with extended device support and dynamic EEP parsing.
+
+## Overview
+
+This custom integration extends the standard Home Assistant EnOcean integration with:
+
+- **Extended Device Support**: Additional EnOcean Equipment Profiles (EEPs) including VentilAirSec ventilation units
+- **Dynamic EEP Parsing**: Improved parsing of complex EEP profiles with proper enum handling
+- **Multiple Platform Support**: Full support for sensors, binary sensors, switches, lights, buttons, numbers, and select entities
+- **Easy Setup**: Config flow with automatic device discovery
+- **Serial Port Auto-detection**: Automatically finds your EnOcean USB dongle
+
+## Installation
+
+### HACS (Recommended)
+
+1. Open HACS in your Home Assistant instance
+2. Click on "Integrations"
+3. Click the three dots in the top right corner
+4. Select "Custom repositories"
+5. Add this repository URL: `https://github.com/pledou/ha-enocean-hacs`
+6. Select category "Integration"
+7. Click "Add"
+8. Find "EnOcean Extended" in the integration list and click "Download"
+9. Restart Home Assistant
+
+### Manual Installation
+
+1. Download the latest release from the [releases page](https://github.com/pledou/ha-enocean-hacs/releases)
+2. Extract the `custom_components/enocean` folder to your Home Assistant's `custom_components` directory
+3. Restart Home Assistant
+
+## Configuration
+
+1. Go to **Settings** → **Devices & Services**
+2. Click **+ Add Integration**
+3. Search for "EnOcean"
+4. Select your serial port from the dropdown (auto-detected)
+5. Follow the configuration wizard
+
+## Supported Devices
+
+### Sensors
+- Temperature sensors (A5-02-05, A5-02-0B, etc.)
+- Humidity sensors (A5-04-01, A5-04-02, etc.)
+- Power meters (A5-12-01, A5-12-02, A5-12-03)
+- Ventilation units (D2-50-00, D2-50-01)
+- And many more...
+
+### Actuators
+- Light switches (D2-01-08, D2-01-09, D2-01-12)
+- Dimmers (A5-38-08)
+- Window handles (F6-10-00)
+
+### Special Devices
+- VentilAirSec ventilation units with full control and monitoring
+
+For a complete list of supported profiles, see [EEP Platform Mapping](custom_components/enocean/eep_platform_mapping.yaml).
+
+## Dependencies
+
+This integration uses the enhanced enocean library: [pledou/enocean](https://github.com/pledou/enocean)
+
+## Development
+
+This integration is based on the Home Assistant core EnOcean integration with improvements for:
+- Dynamic EEP parsing with proper enum type handling
+- Extended device profiles
+- Better error handling and logging
+- Improved teach-in functionality
+
+## Contributing
+
+Contributions are welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+- Based on the Home Assistant core EnOcean integration
+- Enhanced enocean library by Pierre Leduc
+- Original enocean library by [kipe](https://github.com/kipe/enocean)
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/pledou/ha-enocean-hacs/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/pledou/ha-enocean-hacs/discussions)
+- **Home Assistant Community**: [Community Forum](https://community.home-assistant.io/)

@@ -2,6 +2,7 @@
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
 [![GitHub Release](https://img.shields.io/github/release/pledou/ha-enocean.svg)](https://github.com/pledou/ha-enocean/releases)
+[![Tests](https://github.com/pledou/ha-enocean/actions/workflows/test.yml/badge.svg)](https://github.com/pledou/ha-enocean/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/pledou/ha-enocean.svg)](LICENSE)
 
 An enhanced Home Assistant integration for EnOcean devices with extended device support and dynamic EEP parsing.
@@ -80,6 +81,27 @@ This integration is based on the Home Assistant core EnOcean integration with im
 - Extended device profiles
 - Better error handling and logging
 - Improved teach-in functionality
+
+### Running Tests
+
+To run the tests locally:
+
+```bash
+# Create a virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install test dependencies
+pip install -r requirements_test.txt
+
+# Run all tests
+pytest tests/ -v
+
+# Run tests with coverage
+pytest tests/ -v --cov=custom_components.enocean --cov-report=term-missing
+```
+
+Tests are automatically run via GitHub Actions on every push and pull request.
 
 ## Contributing
 

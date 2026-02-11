@@ -36,6 +36,10 @@ This custom integration extends the standard Home Assistant EnOcean integration 
 2. Extract the `custom_components/enocean` folder to your Home Assistant's `custom_components` directory
 3. Restart Home Assistant
 
+### Note on HACS Validation
+
+When validating this repository, HACS may show a warning about the brands repository: **"The repository has not been added as a custom domain to the brands repo"**. This is expected and not an issue. This custom integration uses the `enocean` domain (same as the core Home Assistant integration) and automatically inherits the existing EnOcean branding from the [Home Assistant brands repository](https://github.com/home-assistant/brands). Since this integration replaces/extends the core enocean component, it reuses the official enocean brand assets (logo, icon, etc.).
+
 ## Configuration
 
 1. Go to **Settings** → **Devices & Services**

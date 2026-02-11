@@ -65,7 +65,9 @@ For a complete list of supported profiles, see [EEP Platform Mapping](custom_com
 
 ## Dependencies
 
-This integration uses the enhanced enocean library: [pledou/enocean](https://github.com/pledou/enocean)
+This integration uses the enhanced enocean library from PyPI: [enocean-extended](https://pypi.org/project/enocean-extended/)
+
+The library is automatically installed when you install this integration.
 
 ## Development
 

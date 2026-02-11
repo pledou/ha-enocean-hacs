@@ -374,26 +374,14 @@
           name: "DEBF"
           config:
             entity_category: "config"
-        - component: number
-          name: "BOOS"
+        - name: "BOOS"
           config:
-            unit: "min"
-            min: "0"
-            max: "200"
-            step: "1"
-            mode: "box"
             command_template: >-
-              {"MSC":"1","command":"0","BOOST":{{value}}, "send":"clear"}
-        - component: number
-          name: "VAC"
+              {"MSC":"1","command":"0","BOOST":{{value}}, "COMMAND":"1","send":"clear"}
+        - name: "VAC"
           config:
-            unit: "d"
-            min: "0"
-            max: "365"
-            step: "1"
-            mode: "box"
             command_template: >-
-              {"MSC":"1","CMD":"0","VACS":{{value}}, "send":"clear"}
+              {"MSC":"1","CMD":"0","VACS":{{value}}, "COMMAND":"1","send":"clear"}
         - component: sensor
           name: "ETATS"
         - component: sensor

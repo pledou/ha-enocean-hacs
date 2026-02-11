@@ -541,6 +541,7 @@ class DynamicEnOceanSensor(DynamicEnoceanEntity, EnOceanSensor):
                 err,
             )
 
+
 class LastDataReceivedSensor(DynamicEnOceanSensor):
     """Special sensor that tracks the timestamp of the last received packet.
 

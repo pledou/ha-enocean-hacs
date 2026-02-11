@@ -31,14 +31,22 @@ async def async_setup_entry(
         def _button_class_factory(ent: EEPEntityDef | None):
             """Select button class based on entity definition."""
             # Check if this is a CommandTemplateButton (has command_template)
-            if isinstance(ent, EEPEntityDef) and hasattr(ent, "command_template") and ent.command_template:
+            if (
+                isinstance(ent, EEPEntityDef)
+                and hasattr(ent, "command_template")
+                and ent.command_template
+            ):
                 return CommandTemplateButton
             # Otherwise use regular DynamicEnOceanButton
             return DynamicEnOceanButton
 
         def _kwargs_factory(ent: EEPEntityDef | None):
             # Check if this is a CommandTemplateButton
-            if isinstance(ent, EEPEntityDef) and hasattr(ent, "command_template") and ent.command_template:
+            if (
+                isinstance(ent, EEPEntityDef)
+                and hasattr(ent, "command_template")
+                and ent.command_template
+            ):
                 # CommandTemplateButton only needs button_name
                 button_name = ent.description or "Command Button"
                 return {"button_name": button_name}
@@ -145,6 +153,7 @@ class DynamicEnOceanButton(DynamicEnoceanEntity, EnOceanButton):
         # Initialize button-specific attributes
         self.channel = channel
         self._attr_name = f"{dev_name} {button_name}"
+
 
 class CommandTemplateButton(DynamicEnoceanEntity, ButtonEntity):
     """EnOcean button that sends commands via command_template.

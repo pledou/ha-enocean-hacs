@@ -177,9 +177,13 @@ class DynamicEnOceanSelect(DynamicEnoceanEntity, EnOceanSelect):
         )
 
         # Store command template for sending selected option when available
+        # Also store enum_items for value lookup
+        self._enum_items = None
         if fields is not None and isinstance(fields, EEPEntityDef):
             if fields.command_template is not None:
                 self._command_template = fields.command_template
+            if fields.enum_items is not None:
+                self._enum_items = fields.enum_items
 
     async def async_select_option(self, option: str) -> None:
         """Select an option and send command to device if template available."""
@@ -187,15 +191,29 @@ class DynamicEnOceanSelect(DynamicEnoceanEntity, EnOceanSelect):
             return
 
         if self._command_template:
-            # Find the numeric value for the selected option
-            option_index = self._attr_options.index(option)
+            # Find the actual raw value for the selected option using enum_items
+            option_value = None
+            if self._enum_items:
+                # Look up the raw value from enum_items by matching description
+                for item in self._enum_items:
+                    if item.get("description") == option:
+                        option_value = item.get("value")
+                        break
+
+            # Fallback to index if enum_items not available (shouldn't happen for enums)
+            if option_value is None:
+                LOGGER.warning(
+                    "No enum_items available for %s, falling back to index (may be incorrect)",
+                    self._attr_unique_id,
+                )
+                option_value = self._attr_options.index(option)
 
             # Send command using the template
             await self.hass.async_add_executor_job(
                 self._send_message,
                 self._command_template,
                 {
-                    "value": option_index,
+                    "value": option_value,
                     "option": option,
                     "device_id": self.dev_id,
                     "data_field": self._data_field,

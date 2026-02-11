@@ -62,6 +62,7 @@ class EEPEntityDef:
     min_value: float | None = None
     max_value: float | None = None
     enum_options: list[str] | None = None
+    enum_items: list[dict] | None = None  # Full items with value and description
     offset: int | None = None
     icon: str | None = None
     state_class: str | None = None

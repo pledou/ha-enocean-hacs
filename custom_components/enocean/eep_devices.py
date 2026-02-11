@@ -229,6 +229,7 @@ def _extract_eep_fields(
                     enum_options=(
                         [it["description"] for it in (items or [])] if items else None
                     ),
+                    enum_items=items,  # Store full items with values and descriptions
                     offset=offset,
                 )
                 # Apply smart auto-detection for device properties

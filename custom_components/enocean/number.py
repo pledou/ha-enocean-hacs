@@ -10,7 +10,7 @@ from homeassistant.components.number import RestoreNumber
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.device_registry import DeviceInfo
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DATA_ENOCEAN, DOMAIN, ENOCEAN_DONGLE, LOGGER
 from .entity import (
@@ -25,7 +25,7 @@ from .types import EEPEntityDef
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up EnOcean number entities."""
     enocean_data = hass.data.get(DATA_ENOCEAN, {})

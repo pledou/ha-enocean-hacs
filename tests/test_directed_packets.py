@@ -1,9 +1,8 @@
 """Test that directed packets (with specific destination) are not parsed."""
 
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock, Mock, patch
 
-from enocean.protocol.constants import PACKET, RORG
-from enocean.protocol.packet import RadioPacket
+from enocean.protocol.constants import RORG
 
 from custom_components.enocean.dongle import EnOceanDongle
 from homeassistant.core import HomeAssistant
@@ -25,10 +24,12 @@ def test_directed_packet_not_parsed(hass: HomeAssistant) -> None:
     ) as mock_comm:
         mock_comm.return_value = MagicMock()
         mock_comm.return_value.teach_in = False
+        mock_comm.return_value.base_id = [0xFF, 0x00, 0x00, 0x00]
         dongle = EnOceanDongle(hass, "/dev/ttyUSB0")
+        dongle.base_id = [0xFF, 0x00, 0x00, 0x00]  # Set base_id for tests
 
-        # Create a packet from 04:20:58:A5 TO 04:20:74:C9 (not broadcast)
-        packet = RadioPacket(PACKET.RADIO)
+        # Create a mock packet from 04:20:58:A5 TO 04:20:74:C9 (not broadcast)
+        packet = Mock()
         packet.rorg = RORG.MSC
         packet.sender = [0x04, 0x20, 0x58, 0xA5]
         packet.destination = [0x04, 0x20, 0x74, 0xC9]  # Specific device, not broadcast
@@ -46,6 +47,7 @@ def test_directed_packet_not_parsed(hass: HomeAssistant) -> None:
             0xA5,
             0x00,
         ]
+        packet.parsed = {}  # No parsed data initially
 
         # Register a profile for the sender
         dongle.register_device_profile([0x04, 0x20, 0x58, 0xA5], 0xD1079, 0x01, 0x00)
@@ -65,10 +67,12 @@ def test_broadcast_packet_is_parsed(hass: HomeAssistant) -> None:
     ) as mock_comm:
         mock_comm.return_value = MagicMock()
         mock_comm.return_value.teach_in = False
+        mock_comm.return_value.base_id = [0xFF, 0x00, 0x00, 0x00]
         dongle = EnOceanDongle(hass, "/dev/ttyUSB0")
+        dongle.base_id = [0xFF, 0x00, 0x00, 0x00]  # Set base_id for tests
 
-        # Create a broadcast packet from 04:20:58:A5
-        packet = RadioPacket(PACKET.RADIO)
+        # Create a mock broadcast packet from 04:20:58:A5
+        packet = Mock()
         packet.rorg = RORG.MSC
         packet.sender = [0x04, 0x20, 0x58, 0xA5]
         packet.destination = [0xFF, 0x9C, 0x80, 0x80]  # Broadcast
@@ -96,6 +100,7 @@ def test_broadcast_packet_is_parsed(hass: HomeAssistant) -> None:
             0xA5,
             0x00,
         ]
+        packet.parsed = {}  # No parsed data initially
 
         # Register a profile for the sender
         dongle.register_device_profile([0x04, 0x20, 0x58, 0xA5], 0xD1079, 0x01, 0x00)
@@ -129,14 +134,17 @@ def test_ventilairsec_cmd8_registers_sensor_profile(hass: HomeAssistant) -> None
     ) as mock_comm:
         mock_comm.return_value = MagicMock()
         mock_comm.return_value.teach_in = False
+        mock_comm.return_value.base_id = [0xFF, 0x00, 0x00, 0x00]
         dongle = EnOceanDongle(hass, "/dev/ttyUSB0")
+        dongle.base_id = [0xFF, 0x00, 0x00, 0x00]  # Set base_id for tests
 
-        # Create a CMD 8 packet (sensor discovery)
-        packet = RadioPacket(PACKET.RADIO)
+        # Create a mocked CMD 8 packet (sensor discovery)
+        packet = Mock()
         packet.rorg = RORG.MSC
         packet.rorg_manufacturer = 0x079
         packet.cmd = 8
         packet.sender = [0x04, 0x20, 0x58, 0xA5]
+        packet.destination = [0xFF, 0x9C, 0x80, 0x80]  # Broadcast
         packet.parsed = {
             "IDAPP": {"value": 0x042074C9, "raw_value": 69730505},
             "PROFAPP": {"value": 1, "raw_value": 1},  # Profile 1 = d1079-00-00

@@ -32,7 +32,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import config_validation as cv, template
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from homeassistant.helpers.entity import EntityCategory  # type: ignore[attr-defined]
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DATA_ENOCEAN, LOGGER, SIGNAL_RECEIVE_MESSAGE
 from .entity import (
@@ -153,7 +153,7 @@ def _select_sensor_class(entity_def: EEPEntityDef):
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up EnOcean sensor entities."""
     enocean_data = hass.data.get(DATA_ENOCEAN, {})

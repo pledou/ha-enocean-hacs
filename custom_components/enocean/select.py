@@ -14,7 +14,7 @@ from enocean.protocol.eep_metadata import get_field_value_with_enum
 from homeassistant.components.select import SelectEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DATA_ENOCEAN, LOGGER
 from .entity import DynamicEnoceanEntity, EnOceanEntity, async_create_entities_from_eep
@@ -24,7 +24,7 @@ from .types import EEPEntityDef
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up EnOcean select entities."""
     enocean_data = hass.data.get(DATA_ENOCEAN, {})

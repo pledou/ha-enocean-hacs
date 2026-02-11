@@ -5,7 +5,7 @@ from __future__ import annotations
 from homeassistant.components.button import ButtonEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import DATA_ENOCEAN, ENOCEAN_DONGLE, LOGGER
 from .entity import DynamicEnoceanEntity, EnOceanEntity, async_create_entities_from_eep
@@ -15,7 +15,7 @@ from .types import EEPEntityDef
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
-    async_add_entities: AddConfigEntryEntitiesCallback,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up EnOcean button entities."""
     enocean_data = hass.data.get(DATA_ENOCEAN, {})
